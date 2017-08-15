@@ -31,7 +31,7 @@ For the ftp config, you'll find every thing you need here : http://camel.apache.
 # Ready To Go
 
 To start a module **don't forget to pass your config.properties file path
-in argument**, if you don't the _ConfigManager_ will look at your root folder for file config.properties (useful when you just want to deploy your .jar)
+in argument**, if you don't the _ConfigManager_ will look at your root folder for file _config.properties_ (useful when you just want to deploy your .jar)
 
 For my development I'm using this path : _camel-common/src/test/resources/config-dev.properties_
 
