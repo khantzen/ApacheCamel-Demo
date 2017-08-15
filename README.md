@@ -35,5 +35,5 @@ in argument**, if you don't the _ConfigManager_ will look at your root folder fo
 
 For my development I'm using this path : _camel-common/src/test/resources/config-dev.properties_
 
-Once this done, just run the module using your IDE.
+Once this done, just run the module main class using your IDE.
 
