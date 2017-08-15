@@ -1,0 +1,5 @@
+rootProject.name = 'demo-parent'
+include 'camel-common'
+include 'simple-fetch'
+include 'camel-audit'
+
