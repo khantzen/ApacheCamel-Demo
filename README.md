@@ -37,3 +37,5 @@ For my development I'm using this path : _camel-common/src/test/resources/config
 
 Once this done, just run the module main class using your IDE.
 
+## PS 
+Unit test will come asap
