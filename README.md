@@ -1,7 +1,8 @@
 # ApacheCamel Demo
 
-You'll find here a little demo about how ApacheCamel does work and some leads
-to help you start your first project on camel.
+Here is a little demo about how ApacheCamel does work and some leads to help you start your first project on camel.
+
+This demo's goal is to develop a module _simple-fetch_ who's gonna recover an xml file containing user information (firstname, lastname, email, birthdate) on a ftp server, analyse this file and then store those informations into a database. All of this while sending log of his progression to another module _audit-camel_ that will store them into a database. Those two modules depend on a third module call _camel-common_ containing different classes used by both of them.
 
 This is actually the demo/example that I would like to have when I started
 working with ApacheCamel a year ago (july 2016).
@@ -25,8 +26,8 @@ By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitm
 
 ## Config
 
-The config.properties sample that I gave you works only on my personal computer, so you'll have to change the value (you can keep the keys of course) to make it works on yours.
-For the ftp config, you'll find every thing you need here : http://camel.apache.org/ftp.html
+The _config.properties_ sample that I gave you works only on my personal computer, so you'll have to change the values (you can keep the keys of course) to make it works on yours.
+For the ftp config, you'll find everything you need here : http://camel.apache.org/ftp.html
 
 # Ready To Go
 
@@ -35,7 +36,7 @@ in argument**, if you don't the _ConfigManager_ will look at your root folder fo
 
 For my development I'm using this path : _camel-common/src/test/resources/config-dev.properties_
 
-Once this done, just run the module main class using your IDE.
+Once this is done, just run the module main class using your IDE.
 
 ## PS 
 Unit test will come asap
