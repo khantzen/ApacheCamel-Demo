@@ -21,7 +21,7 @@ In there you'll find :
 To run this project you should have RabbitMq installed on your machine, to install
 RabbitMq, check this link : _https://www.rabbitmq.com/#getstarted_
 
-Don't forget to activate the ManagementPlugin by the way : _https://www.rabbitmq.com/management.html_
+By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitmq.com/management.html_
 
 ## Config
 
