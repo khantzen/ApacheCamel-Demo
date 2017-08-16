@@ -37,7 +37,7 @@ in argument**, if you don't the _ConfigManager_ will look at your root folder fo
 
 For my development I'm using this path : _camel-common/src/test/resources/config-dev.properties_
 
-Once this is done, just run the module main class using your IDE.
+Once this is done, just run the module's main class using your IDE.
 
 ## PS 
 Unit test will come asap
