@@ -2,7 +2,7 @@
 
 Here is a little demo about how ApacheCamel does work and some leads to help you start your first project on camel.
 
-This demo's goal is to develop a module _simple-fetch_ who's gonna recover an xml file containing user information (firstname, lastname, email, birthdate) on a ftp server, analyse this file and then store those informations into a database. All of this while sending log of his progression to another module _audit-camel_ that will store them into a database. Those two modules depend on a third module call _camel-common_ containing different classes used by both of them.
+This demo's goal is to develop a module _simple-fetch_ who's gonna recover a xml file containing user information (firstname, lastname, email, birthdate) from a ftp server, analyse this file and then store those informations into a database. All of this while sending log of his progression to another module _audit-camel_ that will store them into the same database. Those two modules depend on a third module call _camel-common_ containing different classes used by both of them.
 
 This is actually the demo/example that I would like to have when I started
 working with ApacheCamel a year ago (july 2016).
@@ -10,7 +10,7 @@ working with ApacheCamel a year ago (july 2016).
 # Set up
 
 Everything you need is in the _Assets_ folder.
-In there you'll find :
+What you'll find in it:
 * An application config-sample
 * The script to build the database used by the application
 * The RabbitMq json config
@@ -22,11 +22,11 @@ In there you'll find :
 To run this project you should have RabbitMq installed on your machine, to install
 RabbitMq, check this link : _https://www.rabbitmq.com/#getstarted_
 
-By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitmq.com/management.html_
+By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitmq.com/management.html_ it will allow you to monitor your queues from a web interface.
 
 ## Config
 
-The _config.properties_ sample that I gave you works only on my personal computer, so you'll have to change the values (you can keep the keys of course) to make it works on yours.
+The _config.properties_ sample that I gave you works only on my personal computer, so you'll have to change the values (you have to keep the keys of course) to make it works on yours.
 For the ftp config, you'll find everything you need here : http://camel.apache.org/ftp.html
 
 # Ready To Go
