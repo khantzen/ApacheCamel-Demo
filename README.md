@@ -2,7 +2,7 @@
 
 Here is a little demo about how ApacheCamel works and some leads to help you start your first project on camel.
 
-This demo's goal is to develop a module _simple-fetch_ who's gonna recover a xml file containing user information (firstname, lastname, email, birthdate) from a ftp server, analyse this file and then store those informations into a database. All of this while sending log of his progression to another module _audit-camel_ that will store them into the same database. Those two modules depend on a third module call _camel-common_ containing different classes used by both of them.
+This demo's goal is to develop a _simple-fetch_ module who's gonna recover a xml file containing user information (firstname, lastname, email, birthdate) from a ftp server, analyse this file and then store those informations into a database. All of this while sending log of his progression to another module _audit-camel_ that will store them into the same database. Those two modules depend on a third module call _camel-common_ containing different classes used by both of them.
 
 This is actually the demo/example that I would like to have when I started
 working with ApacheCamel a year ago (july 2016).
