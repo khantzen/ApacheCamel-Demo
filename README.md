@@ -7,8 +7,6 @@ The purpose of this demo app is to develop a _simple-fetch_ module which is goin
 This is actually the demo/example that I would like to have when I started
 working with ApacheCamel a year ago (july 2016).
 
-Coucou Marion
-C'est pour vérifier si tu lis bien
 
 # Set up
 
