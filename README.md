@@ -20,7 +20,7 @@ What you'll find in it:
 
 ## RabbitMq
 
-To run this project you should have RabbitMq installed on your machine, to install
+To run this project you should have RabbitMq installed on your machine. To install
 RabbitMq, check this link : _https://www.rabbitmq.com/#getstarted_
 
 By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitmq.com/management.html_ it will allow you to monitor your queues from a web interface.
