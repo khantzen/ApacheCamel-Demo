@@ -15,7 +15,7 @@ What you'll find in it:
 * An application config-sample
 * The script to build the database used by the application
 * The RabbitMq json config
-* A copy of the xml that can be understand by SimpleFetch Module
+* A copy of the xml that can be understood by SimpleFetch Module
 
 
 ## RabbitMq
