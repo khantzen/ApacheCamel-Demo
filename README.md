@@ -27,7 +27,7 @@ By the way, don't forget to activate the ManagementPlugin : _https://www.rabbitm
 
 ## Config
 
-The _config.properties_ sample that I gave you works only on my personal computer, so you'll have to change the values (you have to keep the keys of course) to make it works on yours.
+The _config.properties_ sample that I gave you works only on my personal computer, so you'll have to change the values (you have to keep the keys of course) to make it work on yours.
 For the ftp config, you'll find everything you need here : http://camel.apache.org/ftp.html
 
 # Ready To Go
