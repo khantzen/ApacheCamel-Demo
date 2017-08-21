@@ -22,6 +22,16 @@ import static com.kevin.demo.camel.common.constants.Constant.SIMPLE_FETCH;
  */
 public class WorkerProcessor implements Processor {
 
+    private String mqLog;
+
+    public WorkerProcessor() {
+        this.mqLog = Queue.Audit.toString();
+    }
+
+    public WorkerProcessor(String mqLog) {
+        this.mqLog = mqLog;
+    }
+
     @Override
     public void process(Exchange exchange) throws Exception {
         Message in = exchange.getIn();
@@ -38,12 +48,18 @@ public class WorkerProcessor implements Processor {
                     .setSender(SIMPLE_FETCH)
                     .build();
 
-            exchange.getContext().createProducerTemplate().sendBody(Queue.Audit.toString(), log);
+            //Better practice here would be to isolate this part in an external class
+            //then inject it in your processor, so you can mock it for your unit test
+            exchange.getContext().createProducerTemplate().sendBody(this.mqLog, log);
         });
 
         if (checkList.stream().anyMatch(cl -> cl.isFinalize())) {
             exchange.setProperty(Exchange.ROUTE_STOP, true);
         }
+    }
+
+    public UserXml getUser(Message in) {
+        return in.getBody(UserXml.class);
     }
 
     //Usually for LogLevel Error it's better to have a personnal exception object that can take a string list of message
@@ -53,34 +69,36 @@ public class WorkerProcessor implements Processor {
         List<CheckLog> checkList = new ArrayList<>();
 
 
-        if (!Regex.doesMatch(xml.getFirstName(), "\\w+")) {
+        if (!Regex.doesMatch(xml.getFirstName(), "^[^\\W\\d]+$")) {
             checkList.add(new CheckLog(LogLevel.ERROR, "Invalid first name format", true));
         }
 
-        if (!Regex.doesMatch(xml.getFirstName(), "\\w+")) {
+        if (!Regex.doesMatch(xml.getLastName(), "^[^\\W\\d]+$")) {
             checkList.add(new CheckLog(LogLevel.ERROR, "Invalid last name format", true));
         }
 
 
         if (!Regex.doesMatch(xml.getBirthDate(), "\\d{4}-\\d{2}-\\d{2}")) {
             checkList.add(new CheckLog(LogLevel.ERROR, "Invalid birth date format", true));
+        } else {
+            //You can also add checks to see if the birdate is valid one, or whatever
+
+            //Yes I'm lazy to cast this string as a date...
+            List<String> g = Regex.capture(xml.getBirthDate(), "(\\d{4})");
+
+            int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+            int year = Integer.parseInt(g.get(0));
+
+            if (currentYear - year < 21) {
+                checkList.add(new CheckLog(LogLevel.WARN, "This user is not an international adult"));
+            }
         }
 
-        //You can also add checks to see if the birdate is valid one, or whatever
-
-        //Yes I'm lazy to cast this string as a date...
-        List<String> g = Regex.capture(xml.getBirthDate(), "(\\d{4})");
-
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-
-        int year = Integer.parseInt(g.get(0));
-
-        if (currentYear - year < 21) {
-            checkList.add(new CheckLog(LogLevel.WARN, "This user is not an international adult"));
-        }
 
 
-        if (!Regex.doesMatch(xml.getEmail(), ".+?@.+?\\..+")) {
+
+        if (!Regex.doesMatch(xml.getEmail(), "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
             checkList.add(new CheckLog(LogLevel.ERROR, "Invalid email format", true));
         }
 

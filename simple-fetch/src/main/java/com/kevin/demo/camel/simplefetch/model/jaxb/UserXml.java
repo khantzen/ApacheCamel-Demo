@@ -34,6 +34,14 @@ public class UserXml {
     public UserXml() {
     }
 
+    public String getWhatever() {
+        return whatever;
+    }
+
+    public void setWhatever(String whatever) {
+        this.whatever = whatever;
+    }
+
     public String getFirstName() {
         return firstName;
     }

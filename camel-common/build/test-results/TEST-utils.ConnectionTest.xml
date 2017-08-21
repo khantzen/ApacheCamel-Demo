@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="utils.ConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-08-21T17:42:45" hostname="kevin" time="0.708">
+  <properties/>
+  <testcase name="testConnection" classname="utils.ConnectionTest" time="0.708"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[août 21, 2017 7:42:45 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {5.2.10.Final}
+août 21, 2017 7:42:45 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+août 21, 2017 7:42:45 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+août 21, 2017 7:42:45 PM org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator initiateService
+WARN: HHH000181: No appropriate connection provider encountered, assuming application will be supplying connections
+août 21, 2017 7:42:45 PM org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator initiateService
+WARN: HHH000342: Could not obtain connection to query metadata : The application must supply JDBC connections
+août 21, 2017 7:42:45 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+août 21, 2017 7:42:45 PM org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl makeLobCreatorBuilder
+INFO: HHH000422: Disabling contextual LOB creation as connection was null
+]]></system-err>
+</testsuite>
