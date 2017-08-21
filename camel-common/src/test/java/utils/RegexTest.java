@@ -14,7 +14,7 @@ public class RegexTest {
 
     @Test
     public void matchTest() {
-        Regex.doesMatch("42", "^(?=(?!(.)\\1)([^\\DO:105-93+30])(?<!\\d(?<=(?![5-90-3])\\d))).[^\\WHY?]$");
+        Assertions.assertThat(Regex.doesMatch("42", "^[^\\DO:105-93+30]+$")).isTrue();
     }
 
     @Test
