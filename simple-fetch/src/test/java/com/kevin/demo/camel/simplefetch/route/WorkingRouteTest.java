@@ -38,7 +38,7 @@ public class WorkingRouteTest extends CamelTestSupport {
 
         this.userRepo = Mockito.mock(UserRepository.class);
 
-        //Mockito.doNothing().when(this.userRepo).storeUser(Mockito.any());
+        Mockito.doNothing().when(this.userRepo).storeUser(Mockito.any());
 
         Processor worker = new WorkerProcessor("mock:log");
         Processor saveUser = new SaveUserProcessor(userRepo);
