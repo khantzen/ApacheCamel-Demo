@@ -12,9 +12,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class WorkerProcessorTest {
@@ -25,7 +25,7 @@ public class WorkerProcessorTest {
     @Before
     public void setUp() throws Exception {
         ConfigManager config = ConfigManager.getInstance();
-        config.loadConfig(new String[] {"camel-common/src/test/resources/config-dev.properties"});
+        config.loadConfig(new String[]{"camel-common/src/test/resources/config-dev.properties"});
     }
 
     //param format
@@ -37,7 +37,7 @@ public class WorkerProcessorTest {
     //Nominal Test
     @Test
     public void testUserNominal() {
-        String[] param = new String[] {"1425-8554", "unit", "test", "1991-10-07", "utest@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit", "test", "1991-10-07", "utest@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
@@ -63,7 +63,7 @@ public class WorkerProcessorTest {
 
         this.p.process(ex);
 
-        Assertions.assertThat((Boolean)ex.getProperty(Exchange.ROUTE_STOP, false)).isFalse();
+        Assertions.assertThat((Boolean) ex.getProperty(Exchange.ROUTE_STOP, false)).isFalse();
     }
 
     //param format
@@ -75,7 +75,7 @@ public class WorkerProcessorTest {
     //Test erreur
     @Test
     public void testExchangeError() throws Exception {
-        String[] param = new String[] {"1425-8554", "unit;:é", "test", "1991-10-07", "ut%@est@deémo.ut"};
+        String[] param = new String[]{"1425-8554", "unit;:é", "test", "1991-10-07", "ut%@est@deémo.ut"};
         UserXml u = MockBuilder.buildUserXml(param);
         Exchange ex = this.buildExchange();
 
@@ -83,26 +83,26 @@ public class WorkerProcessorTest {
 
         this.p.process(ex);
 
-        Assertions.assertThat((Boolean)ex.getProperty(Exchange.ROUTE_STOP, false)).isTrue();
+        Assertions.assertThat((Boolean) ex.getProperty(Exchange.ROUTE_STOP, false)).isTrue();
     }
 
 
     @Test
     public void testUserWithWrongFirstNameFormat() {
-        String[] param = new String[] {"1425-8554", "unit;:é", "test", "1991-10-07", "utest@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit;:é", "test", "1991-10-07", "utest@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
         List<CheckLog> checkList = p.checkUserData(u);
 
         Assertions.assertThat(checkList.stream()
-                        .anyMatch(l -> l.getLevel() == LogLevel.ERROR && l.isFinalize() && l.getMessage().contains("Invalid first")))
-                        .isTrue();
+                .anyMatch(l -> l.getLevel() == LogLevel.ERROR && l.isFinalize() && l.getMessage().contains("Invalid first")))
+                .isTrue();
     }
 
     @Test
     public void testUserWithWrongLastNameFormat() {
-        String[] param = new String[] {"1425-8554", "unit", "téest_58-/", "1991-10-07", "utest@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit", "téest_58-/", "1991-10-07", "utest@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
@@ -115,7 +115,7 @@ public class WorkerProcessorTest {
 
     @Test
     public void testUserWithWrongBirthdateFormat() {
-        String[] param = new String[] {"1425-8554", "unit", "test", "191-102-07", "utest@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit", "test", "191-102-07", "utest@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
@@ -135,7 +135,7 @@ public class WorkerProcessorTest {
 
         Date d = c.getTime();
 
-        String[] param = new String[] {"1425-8554", "unit", "test", df.format(d), "utest@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit", "test", df.format(d), "utest@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
@@ -148,7 +148,7 @@ public class WorkerProcessorTest {
 
     @Test
     public void testInvalidEmailUser() {
-        String[] param = new String[] {"1425-8554", "unit", "test", "1991-10-07", "utest%ù*;@demo.ut"};
+        String[] param = new String[]{"1425-8554", "unit", "test", "1991-10-07", "utest%ù*;@demo.ut"};
 
         UserXml u = MockBuilder.buildUserXml(param);
 
@@ -160,7 +160,7 @@ public class WorkerProcessorTest {
     }
 
     private String getNominalXml() {
-        return  "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+        return "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
                 + "<info whatever='11111-11111'>"
                 + "    <firstname>unit</firstname>"
                 + "    <lastname>test</lastname>"

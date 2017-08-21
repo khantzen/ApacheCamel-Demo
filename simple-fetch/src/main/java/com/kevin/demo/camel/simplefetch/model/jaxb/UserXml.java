@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.*;
 /**
  * Created by khantzen on 14/08/17.
  */
-@XmlRootElement(name="info")
+@XmlRootElement(name = "info")
 @XmlType(propOrder = {
         "whatever",
         "firstName",
@@ -16,19 +16,19 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserXml {
 
-    @XmlAttribute(name="whatever")
+    @XmlAttribute(name = "whatever")
     private String whatever;
 
-    @XmlElement(name="firstname")
+    @XmlElement(name = "firstname")
     private String firstName;
 
-    @XmlElement(name="lastname")
+    @XmlElement(name = "lastname")
     private String lastName;
 
-    @XmlElement(name="birthdate")
+    @XmlElement(name = "birthdate")
     private String birthDate;
 
-    @XmlElement(name="email")
+    @XmlElement(name = "email")
     private String email;
 
     public UserXml() {

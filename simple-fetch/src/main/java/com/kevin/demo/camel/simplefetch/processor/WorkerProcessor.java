@@ -2,10 +2,10 @@ package com.kevin.demo.camel.simplefetch.processor;
 
 import com.kevin.demo.camel.common.constants.LogLevel;
 import com.kevin.demo.camel.common.constants.Queue;
-import com.kevin.demo.camel.common.model.utils.CheckLog;
-import com.kevin.demo.camel.simplefetch.model.jaxb.UserXml;
 import com.kevin.demo.camel.common.model.db.LogMessage;
+import com.kevin.demo.camel.common.model.utils.CheckLog;
 import com.kevin.demo.camel.common.utils.Regex;
+import com.kevin.demo.camel.simplefetch.model.jaxb.UserXml;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.Processor;

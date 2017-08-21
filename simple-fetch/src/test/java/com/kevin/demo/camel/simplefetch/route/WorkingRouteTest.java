@@ -1,6 +1,5 @@
 package com.kevin.demo.camel.simplefetch.route;
 
-import com.kevin.demo.camel.common.model.db.LogMessage;
 import com.kevin.demo.camel.common.processor.ExceptionProcessor;
 import com.kevin.demo.camel.common.processor.LogProcessor;
 import com.kevin.demo.camel.common.repository.UserRepository;
@@ -8,13 +7,9 @@ import com.kevin.demo.camel.common.utils.ConfigManager;
 import com.kevin.demo.camel.simplefetch.processor.SaveUserProcessor;
 import com.kevin.demo.camel.simplefetch.processor.WorkerProcessor;
 import com.kevin.demo.camel.simplefetch.util.MockBuilder;
-import org.apache.camel.Exchange;
-import org.apache.camel.Message;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,14 +17,14 @@ import org.mockito.Mockito;
 
 public class WorkingRouteTest extends CamelTestSupport {
 
-    MockEndpoint log;
+    private MockEndpoint log;
 
     private UserRepository userRepo;
 
     @Override
     public void setUp() throws Exception {
         ConfigManager config = ConfigManager.getInstance();
-        config.loadConfig(new String[] {"camel-common/src/test/resources/config-dev.properties"});
+        config.loadConfig(new String[]{"camel-common/src/test/resources/config-dev.properties"});
         super.setUp();
     }
 
@@ -73,7 +68,7 @@ public class WorkingRouteTest extends CamelTestSupport {
     public void testRouteBlockingCase() throws InterruptedException {
         this.log.expectedMessageCount(4);
 
-        String[] p = new String[] {"12345-54321", "unt1t", "t3st", "1997-01-01", "unit@test.ut"};
+        String[] p = new String[]{"12345-54321", "unt1t", "t3st", "1997-01-01", "unit@test.ut"};
 
         this.template.sendBody("direct:in", MockBuilder.buildUserXml(p));
 
@@ -81,10 +76,8 @@ public class WorkingRouteTest extends CamelTestSupport {
     }
 
 
-
-
     private String getNominalXml() {
-        return  "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+        return "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
                 + "<info whatever='11111-11111'>"
                 + "    <firstname>unit</firstname>"
                 + "    <lastname>test</lastname>"
@@ -93,7 +86,4 @@ public class WorkingRouteTest extends CamelTestSupport {
                 + "</info>";
     }
 
-    private Exchange buildExchange() {
-        return new DefaultExchange(new DefaultCamelContext());
-    }
 }

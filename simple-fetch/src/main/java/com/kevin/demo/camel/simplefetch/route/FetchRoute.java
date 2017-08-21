@@ -1,10 +1,10 @@
 package com.kevin.demo.camel.simplefetch.route;
 
+import com.kevin.demo.camel.common.constants.Queue;
 import com.kevin.demo.camel.common.processor.ExceptionProcessor;
 import com.kevin.demo.camel.common.processor.LogProcessor;
-import com.kevin.demo.camel.simplefetch.processor.FetchProcessor;
-import com.kevin.demo.camel.common.constants.Queue;
 import com.kevin.demo.camel.common.utils.ConfigManager;
+import com.kevin.demo.camel.simplefetch.processor.FetchProcessor;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
@@ -55,16 +55,16 @@ public class FetchRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         onException(Exception.class)
-        .process(exceptionProcessor)
-        .to(mqLog);
+                .process(exceptionProcessor)
+                .to(mqLog);
 
         from(in)
-        .process(ex -> System.out.println(ex.getIn().getBody(String.class))) //Use this "trick" with caution.
-        .process(fetchProcessor)
-        .to(out)
-        .to(archive)
-        .process(logProcessor)
-        .to(mqLog);
+                .process(ex -> System.out.println(ex.getIn().getBody(String.class))) //Use this "trick" with caution.
+                .process(fetchProcessor)
+                .to(out)
+                .to(archive)
+                .process(logProcessor)
+                .to(mqLog);
 
     }
 }

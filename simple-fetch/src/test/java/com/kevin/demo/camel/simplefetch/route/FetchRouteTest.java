@@ -12,8 +12,6 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class FetchRouteTest extends CamelTestSupport {
 
     private MockEndpoint out;
@@ -23,7 +21,7 @@ public class FetchRouteTest extends CamelTestSupport {
     @Override
     public void setUp() throws Exception {
         ConfigManager config = ConfigManager.getInstance();
-        config.loadConfig(new String[] {"camel-common/src/test/resources/config-dev.properties"});
+        config.loadConfig(new String[]{"camel-common/src/test/resources/config-dev.properties"});
         super.setUp();
     }
 
@@ -52,7 +50,7 @@ public class FetchRouteTest extends CamelTestSupport {
     * */
     @Test
     public void nominalTest() throws InterruptedException {
-        String[] userParam = new String[] {"11111-11111", "unit", "test", "1997-01-01", "unit-test@demo.ut"};
+        String[] userParam = new String[]{"11111-11111", "unit", "test", "1997-01-01", "unit-test@demo.ut"};
         UserXml xml = MockBuilder.buildUserXml(userParam);
 
         this.out.expectedMessageCount(1);

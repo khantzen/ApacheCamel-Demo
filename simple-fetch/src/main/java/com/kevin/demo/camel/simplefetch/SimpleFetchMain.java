@@ -1,8 +1,8 @@
 package com.kevin.demo.camel.simplefetch;
 
+import com.kevin.demo.camel.common.utils.ConfigManager;
 import com.kevin.demo.camel.simplefetch.route.FetchRoute;
 import com.kevin.demo.camel.simplefetch.route.WorkingRoute;
-import com.kevin.demo.camel.common.utils.ConfigManager;
 import org.apache.camel.main.Main;
 
 /**

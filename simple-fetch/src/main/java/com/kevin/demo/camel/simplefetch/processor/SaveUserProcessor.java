@@ -1,8 +1,8 @@
 package com.kevin.demo.camel.simplefetch.processor;
 
+import com.kevin.demo.camel.common.model.db.User;
 import com.kevin.demo.camel.common.repository.UserRepository;
 import com.kevin.demo.camel.simplefetch.model.jaxb.UserXml;
-import com.kevin.demo.camel.common.model.db.User;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.Processor;

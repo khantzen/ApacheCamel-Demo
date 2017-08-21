@@ -5,7 +5,6 @@ import com.kevin.demo.camel.common.processor.ExceptionProcessor;
 import com.kevin.demo.camel.common.processor.LogProcessor;
 import com.kevin.demo.camel.simplefetch.processor.SaveUserProcessor;
 import com.kevin.demo.camel.simplefetch.processor.WorkerProcessor;
-import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
@@ -51,19 +50,19 @@ public class WorkingRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         onException(Exception.class)
-        .process(exceptionProcessor)
-        .to(mqLog);
+                .process(exceptionProcessor)
+                .to(mqLog);
 
         from(mqIn)
-            .onCompletion().useOriginalBody()
+                .onCompletion().useOriginalBody()
                 .process(saveUserProcessor)
                 .process(logProcessorUserIsCreated)
                 .to(mqLog)
-            .end()
-        .process(p -> System.out.println(p.getIn().getBody(String.class)))
-        .process(workerProcessor)
-        .process(logProcessorUserWillBeCreated)
-        .to(mqLog);
+                .end()
+                .process(p -> System.out.println(p.getIn().getBody(String.class)))
+                .process(workerProcessor)
+                .process(logProcessorUserWillBeCreated)
+                .to(mqLog);
 
 
     }
