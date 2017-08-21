@@ -36,7 +36,7 @@ public class WorkerProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         Message in = exchange.getIn();
 
-        UserXml xml = in.getBody(UserXml.class);
+        UserXml xml = this.getUser(in);
 
         List<CheckLog> checkList = this.checkUserData(xml);
 
@@ -95,14 +95,9 @@ public class WorkerProcessor implements Processor {
             }
         }
 
-
-
-
         if (!Regex.doesMatch(xml.getEmail(), "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
             checkList.add(new CheckLog(LogLevel.ERROR, "Invalid email format", true));
         }
-
-
 
         return checkList;
     }

@@ -22,4 +22,6 @@ dependencies {
     compile group: 'org.apache.camel', name: 'camel-test', version: '2.19.2'
     compile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
     compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+
 }
